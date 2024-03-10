@@ -1,0 +1,19 @@
+extend ../../layouts/default.pug
+include ../../mixins/box-head.pug
+
+block main 
+    .container 
+        .row 
+            +box-head("Chủ đề bài hát")
+
+        .row    
+            each topic in topics 
+                .col-3 
+                    div(class="card inner-topic")
+                        div(class="inner-image")
+                            img(src=topic.avatar, alt=topic.title)
+                        div(class="card-body")
+                            div(class="inner-infor")
+                                div(class='inner-title') 
+                                    a(href=`/songs/${topic.slug}`) #{topic.title}
+                                div(class="inner-description") #{topic.description}

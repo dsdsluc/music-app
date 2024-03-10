@@ -1,0 +1,36 @@
+div(class = "header")
+    .container 
+        .row
+            .col-4 
+                div(class="inner-logo")
+                    a(href="/") 
+                        img(src="/client/image/logo.png", alt="Logo")
+            .col-4 
+                div(class="inner-form box-search")
+                    form(
+                        class="form-inline"
+                        action=`/search/result`
+                        method="GET"
+                    ) 
+                        div(class="form-group mx-sm-3 mb-2")
+                            input(type="text" 
+                            class="form-control"  
+                            placeholder="Tìm kiếm bài hát" 
+                            name="keyword"  
+                            autocomplete ="off")
+                            
+                        button(type="submit" class="btn btn-primary mb-2") Tìm kiếm
+                    
+                    .inner-suggest
+                        .inner-list
+                            
+
+            .col-4 
+                div(class="inner-menu")
+                    ul 
+                        li
+                            a(href="/topics") <i class="fa-solid fa-house"></i> Trang chủ
+                        li
+                            a(href="/topics") <i class="fa-solid fa-mug-hot"></i> Topic
+                        li
+                            a(href="/favorite-songs") <i class="fa-regular fa-heart"></i> Yêu thích

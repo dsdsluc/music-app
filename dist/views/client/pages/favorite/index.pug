@@ -1,0 +1,44 @@
+extend ../../layouts/default.pug
+include ../../mixins/box-head.pug
+
+block main 
+    .container 
+        .row 
+            +box-head(pageTitle)
+
+        #{favoriteSongs[0].inforSong.title}
+        .row 
+            .col-4  
+                .inner-recent
+                    .inner-image 
+                        img(src=favoriteSongs[0].inforSong.avatar, alt=favoriteSongs[0].inforSong.title)
+                    .inner-infor 
+                        .inner-title Video đã thích 
+                        .inner-detail 
+                            .inner-title 
+                                a(href=`/songs/detail/${favoriteSongs[0].inforSong.slug}`) #{favoriteSongs[0].inforSong.title}
+                            .inner-singer <i class="fa-solid fa-microphone-lines"></i> #{favoriteSongs[0].inforSinger.fullName}
+                            .inner-like <i class="fa-regular fa-thumbs-up"></i> <span> #{favoriteSongs[0].inforSong.like} Like </span>
+                            .inner-timmer <i class="fa-regular fa-clock"></i> 20/3/2004
+            .col-8
+                .row 
+                    each item in favoriteSongs
+                        .col-12 
+                            .inner-favorite
+                                .inner-image 
+                                    img(src=item.inforSong.avatar, alt=item.inforSong.title)
+                                .inner-infor    
+                                    .inner-title 
+                                        a(href=`/songs/detail/${item.inforSong.slug}`) #{item.inforSong.title}
+                                    .inner-singer #{item.inforSinger.fullName}
+                                    div(
+                                        class="inner-item" button-like
+                                        song-id = item.inforSong.id
+                                    ) <i class="fa-regular fa-thumbs-up"></i> <span> #{item.inforSong.like} Like </span>
+                                    div(
+                                        class = "inner-favorition active" 
+                                        button-favorite 
+                                        song-id= item.inforSong.id
+                                    ) <i class="fa-regular fa-heart" ></i> <span> Bài hát yêu thích </span>
+                                    .inner-timmer <i class="fa-regular fa-clock"></i> 20/3/2004
+                                                            

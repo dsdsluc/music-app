@@ -1,0 +1,57 @@
+extend ../../layouts/default.pug
+include ../../mixins/box-head.pug
+
+block css   
+    link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css")
+
+block main 
+    .container 
+        .row 
+            +box-head(pageTitle)
+        
+        .row 
+            .col-12 
+                .innner-infor
+                    .inner-item <i class="fa-solid fa-clock-rotate-left"></i> 20/3/2004
+                    .inner-item <i class="fa-solid fa-microphone-lines"></i> #{singer.fullName}
+                    .inner-item <i class="fa-solid fa-music"></i> #{topic.title}
+                    div(
+                        class="inner-item" button-like
+                        song-id = song.id
+                        ) <i class="fa-regular fa-thumbs-up"></i> <span> #{song.like} Like </span>
+                    div(
+                        class="inner-item"
+                        view
+                        ) <i class="fa-solid fa-headphones"></i> <span> #{song.view} Lượt nghe </span>
+            .col-12 
+                div(
+                    class = ("inner-favorition" + (song.isFavorite == true ? "active": ""))
+                    button-favorite 
+                    song-id= song.id
+                ) <i class="fa-regular fa-heart" ></i> <span> Bài hát yêu thích </span>
+            
+        .row    
+            .inner-song.white 
+                .col-3 
+                    .inner-image 
+                        img(src=singer.avatar, alt=singer.fullName)
+                
+                .col-6
+                    div(class="inner-audio" data-song = song data-singer = singer)
+                        div(id="aplayer")
+
+        .row 
+            .col-12 
+                .inner-description 
+                    div(class="card")
+                        div(class="card-header title") Mô tả
+                        div(class="card-body") !{song.description}
+
+        .row 
+            .col-12 
+                .inner-lyric 
+                    div(class="card")
+                        div(class="card-header title") Lời bài hát
+                        div(class="card-body") !{song.lyrics}
+
+

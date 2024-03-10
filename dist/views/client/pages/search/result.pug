@@ -1,0 +1,20 @@
+extend ../../layouts/default.pug
+include ../../mixins/box-head.pug
+
+block main 
+    .container 
+        .row 
+            +box-head(pageTitle)
+        .row 
+            each song in songs 
+                .col-6 
+                    div(class='inner-song')
+                        div(class="inner-image")
+                            a(href=`/songs/detail/${song.slug}`) 
+                                img(src=song.inforSinger.avatar, alt =song.inforSinger.fullName)
+                        div(class="inner-infor")
+                            div(class="inner-title") 
+                                a(href=`/songs/detail/${song.slug}`) #{song.title}
+                            div(class="inner-singer") 
+                                a(href=`/songs/detail/${song.slug}`) #{song.inforSinger.fullName}
+                            div(class="inner-like") <i class="fa-regular fa-thumbs-up"></i> #{song.like}
